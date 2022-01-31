@@ -45,7 +45,8 @@ function HW8() {
             {/*should work (должно работать)*/}
             <div style={{width: '225px'}}>{finalPeople}</div>
 
-            <div style={{display: 'flex',
+            <div style={{
+                display: 'flex',
                 flexDirection: 'row',
                 margin: '5px 0px 0px 10px',
             }}>
