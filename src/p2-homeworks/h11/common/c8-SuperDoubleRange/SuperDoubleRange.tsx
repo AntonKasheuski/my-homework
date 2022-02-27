@@ -1,23 +1,39 @@
 import React from 'react'
+import {Slider} from "@mui/material";
+import s from './SuperDoubleRange.module.css'
 
 type SuperDoubleRangePropsType = {
-    onChangeRange?: (value: [number, number]) => void
     value?: [number, number]
-    // min, max, step, disable, ...
+    onChangeRange?: (value: [number, number]) => void
+    min: number
+    max: number
+    step: number
+    disabled: boolean
 }
 
 const SuperDoubleRange: React.FC<SuperDoubleRangePropsType> = (
     {
-        onChangeRange, value,
-        // min, max, step, disable, ...
+        value, onChangeRange, min, max, step, disabled
     }
 ) => {
-    // сделать самому, можно подключать библиотеки
+
+    const onChangeCallback = (e: Event, newValue: number | number[]) => {
+
+        onChangeRange && onChangeRange(newValue as [number, number])
+    }
 
     return (
-        <>
-            DoubleRange
-        </>
+        <div className={s.slider}>
+            <Slider
+                value={value}
+                onChange={onChangeCallback}
+                min={min}
+                max={max}
+                step={step}
+                disabled={disabled}
+                disableSwap
+            />
+        </div>
     )
 }
 
